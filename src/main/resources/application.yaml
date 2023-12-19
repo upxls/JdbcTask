@@ -1,0 +1,27 @@
+data-sources:
+  - name: bff-user
+    strategy: postgres #this property is optional, only if you implements multiple
+    url: jdbc:postgresql://localhost:5432/bff-db
+    table: users
+    user: bff-user
+    password: bff-pass
+    mapping:
+      id: user_id
+      username: login
+      name: first_name
+      surname: last_name
+  - name: bff-user
+    strategy: postgres #this property is optional, only if you implements multiple
+    url: jdbc:postgresql://localhost:5432/bff-db
+    table: users
+    user: bff-user
+    password: bff-pass
+    mapping:
+      id: user_id
+      username: login
+      name: first_name
+      surname: last_name
+
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration

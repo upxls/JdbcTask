@@ -1,0 +1,23 @@
+data-sources:
+  - name: data-base-1
+    strategy: postgres
+    url: ${CONTAINER1.URL}
+    table: users
+    user: ${CONTAINER1.USERNAME}
+    password: ${CONTAINER1.PASSWORD}
+    mapping:
+      id: user_id
+      username: login
+      name: first_name
+      surname: last_name
+  - name: data-base-2
+    strategy: mysql
+    url:  ${CONTAINER2.URL}
+    table: user_table
+    user: ${CONTAINER2.USERNAME}
+    password: ${CONTAINER2.PASSWORD}
+    mapping:
+      id: ldap_id
+      username: ldap_login
+      name: name
+      surname: surname

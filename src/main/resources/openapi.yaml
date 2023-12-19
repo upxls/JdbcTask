@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: User API
+  description: User API
+  version: 1.0.0
+
+security:
+  - bearerAuth: [ ]
+
+paths:
+  /users:
+    get:
+      tags:
+        - user
+      summary: Retrieve all users
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        username:
+          type: string
+        name:
+          type: string
+        surname:
+          type: string
+      required:
+        - id
+        - username
+        - name
+        - surname
+
+    UserResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+      required:
+        - users
+
+    Error:
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+      required:
+        - id
+        - message
